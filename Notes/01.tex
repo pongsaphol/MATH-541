@@ -1,0 +1,153 @@
+
+\begin{itemize}
+  \item Book: Dujmit Foote ``Modern Algebra 3rd ed''
+  \item Midterm 3/23 in class
+  \item Final 5/8
+  \item Homeworks: ~weekly
+  \item Honors Credit: Extra sections + homeworks
+\end{itemize}
+
+
+\chapter{Algebra}
+Operations often modeled:
+$+, \cdot$
+
+composition: space of thing that you are looking at $\leftarrow$ alomst always not commutative
+
+\textbf{Groups}: One operation $\cdot$
+
+\textbf{Rings}: 2 operations: $+, \cdot$ that play nice
+
+
+\section{Axioms of Groups}
+
+By ``operation'' on $S$, I mean a function $\cdot S \times S \lthen S$
+
+Instead of $\cdot(a, b)$, we write $a \cdot b$
+
+A group is a set $G$ with an operation $\cdot$ satisfying:
+\begin{enumerate}
+  \item Associativity: $(a \cdot b) \cdot c = a \cdot (b \cdot c)$
+  \item There is an identity element: there is one special element $1 \in G$ so $1 \cdot a  = a$ for any $a \in G$
+  and $a \cdot 1 = a$ for any $a \in G$
+  \item Inverses: For any $a \in G$, there is a $b \in G$ so $a \cdot b = b \cdot a = 1$
+
+\end{enumerate}
+
+\textbf{Note}: $a \cdot b = b\cdot a$ is \underline{not} an axiom.
+
+If $G$ satisfies this, we call it an abelian group
+
+\begin{example*}
+  $(\ZZ, +), (\QQ, +), (\RR, +), (\CC, +)$
+\end{example*}
+
+\begin{enumerate}
+  \item $0$ is the identity
+  \item inverses: $-a$ is the inverse of $a$
+\end{enumerate}
+
+\begin{example*}
+  $(\QQ \setminus \{0\}, \cdot), (\RR \setminus \{0\}, \cdot), (\CC \setminus \{0\}, \cdot)$ 
+\end{example*}
+
+\begin{enumerate}
+  \item $1$ is the identity
+  \item Inverses: $\frac{1}{a}$ is the inverse of $a$
+\end{enumerate}
+
+\textbf{Note:} $(\ZZ \setminus \{0\}, \cdot)$ is not a group
+
+$(V, +)$ is a group
+
+\begin{example*}
+  For $n$, a natural number, $(\ZZ/n\ZZ, +)$ is a group
+\end{example*}
+
+On $\ZZ$, we say $a, b$ are $(\text{mod } n)$ equivalent (written $a \equiv b (\text{mod } n)$) 
+if $n$ divides $a-b$
+
+$\ZZ/n\ZZ$ is the set of equivalence classes mod $n$
+
+\begin{example*}
+  $n = 2$: (odds, evens) which is $\{0_{\text{mod } 2}, 1_{\text{mod } 2}\}$
+\end{example*}
+
+$17_{\text{mod } 2} + 64_{\text{mod } 2} = 81_{\text{mod } 2} = 1_{\text{mod } 2}$
+
+\begin{example*}
+  $\ZZ/3\ZZ = \{0_{\text{mod } 3}, 1_{\text{mod } 3}, 2_{\text{mod } 3}\}$
+\end{example*}
+
+\begin{example*}
+  $(2\ZZ, +)$ is a group (even numbers)
+\end{example*}
+
+\begin{example*}
+  If $(G, \cdot_G)$ and $(H, \cdot_H)$ are groups, then $(G \times H, \cdot_{G} \times \cdot_H)$ is a group
+\end{example*}
+
+\begin{itemize}
+  \item $(g_1, h_1) \cdot_{G \times H} (g_2, h_2) = (g_1 \cdot_G g_2, h_1 \cdot_H h_2)$
+  \item Identity: $1_{G \times H} = (1_G, 1_H)$
+  \item Inverse of $(g, h)$: $(g^{-1}, h^{-1})$ 
+\end{itemize}
+
+\subsection{Properties}
+\begin{itemize}
+  \item $G$ has exactly 1 identity
+  \item Each $g \in G$, there is exactly 1 inverse of $g$ we write this $g^{-1}$
+  (i.e. $^{-1}: G \rightarrow G$)
+  \item $(g^{-1})^{-1} = g$
+  \item $(a \cdot b)^{-1} = b^{-1} \cdot a^{-1}$
+  \item $(a_1 \cdot a_2 \cdot \dotsc \cdot a_m)^{-1} = a_m^{-1} \cdot a_{m-1}^{-1} \cdot \dotsc \cdot a_1^{-1}$
+\end{itemize}
+
+\begin{proof}
+  \text{}
+  \begin{itemize}
+    \item Suppose $a, b$ are both identities in $G$. Then $a = a \cdot b = b$
+    \item Suppose $a, b$ are both inverses of $g$. i.e $a\cdot g = g\cdot a = 1$ and 
+    $b\cdot g = g\cdot b = 1$ Then $b = 1\cdot b = (a\cdot g)\cdot b = a\cdot(g\cdot b) = a\cdot 1 = a$ 
+    \item know $g\cdot g^{-1} = g^{-1}\cdot g = 1$ so $(g^{-1})^{-1} = g$
+    \item $(a \cdot b)^{-1}$ satisfies: $x\cdot(a\cdot b) = (a\cdot b)\cdot x = 1$ 
+    we check $b^{-1}a^{-1}$ does this 
+
+    $(b^{-1}a^{-1})\cdot(a\cdot b) = b^{-1}(a^{-1}\cdot a)b = b^{-1} \cdot 1 \cdot b = b^{-1}b = 1$
+
+    $(ab)(b^{-1}a^{-1}) = a(b\cdot(b^{-1})\cdot a^{-1} = a \cdot 1 \cdot a^{-1} = aa^{-1} = 1$
+  \end{itemize}
+\end{proof}
+
+\begin{theorem}
+  In $G$, there is exactly 1 solution to the equation $ax = b$ for a fixed $a, b \in G$
+\end{theorem}
+
+\begin{corollary*}
+  Cancellation laws:
+  \[ax = ay \implies x = y\]
+  \[xa = ya \implies x = y\]
+\end{corollary*}
+
+\begin{proof}
+  If $a\cdot x = b$
+  \begin{align*}
+    a^{-1}\cdot a\cdot x &= a^{-1}\cdot b \\
+    (a^{-1}\cdot a)\cdot x &=  \\
+    1x = x &= \\
+  \end{align*}
+\end{proof}
+
+\begin{definition*}
+  For $x \in G$, the order of $x$, written $|x|$, is the least $n > 0$ so
+
+  \[x^n = \underbrace{x\cdot x\cdot \dotsc \cdot x}_n = 1_G\]
+\end{definition*}
+If there is no such $n$, $x$ has ``infinite order''
+\begin{example*}
+  In $(\RR \setminus \{0\}, \cdot)$, $|5| = \infty$, $|-1| = 2$, $|1| = 1$
+\end{example*}
+
+\begin{example*}
+  $(\ZZ/6\ZZ, +)$, $|1_{\text{mod } 6}| = 6$, $|2_{\text{mod } 6}| = 3$, $|3_{\text{mod } 6}| = 2$, $|4_{\text{mod } 6}| = 3$, $|5_{\text{mod } 6}| = 2$
+\end{example*}
