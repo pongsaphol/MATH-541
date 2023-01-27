@@ -151,3 +151,172 @@ If there is no such $n$, $x$ has ``infinite order''
 \begin{example*}
   $(\ZZ/6\ZZ, +)$, $|1_{\text{mod } 6}| = 6$, $|2_{\text{mod } 6}| = 3$, $|3_{\text{mod } 6}| = 2$, $|4_{\text{mod } 6}| = 3$, $|5_{\text{mod } 6}| = 2$
 \end{example*}
+
+\section{Dihedral Groups}
+
+\subsection{Triangle}
+
+Look at the collection of symmetries of an equilateral Triangle
+
+\begin{center}
+\begin{tikzpicture}[scale=2]
+  
+  \draw (0,0) node[anchor=north]{$1$}
+  -- (2,0) node[anchor=north]{$3$}
+  -- (1,1.732) node[anchor=south]{$2$}
+  -- cycle;
+\end{tikzpicture}
+\end{center}
+
+\begin{multicols}{3}
+Rotation right
+\begin{itemize}
+  \item 1 $\rightarrow$ 2
+  \item 2 $\rightarrow$ 3
+  \item 3 $\rightarrow$ 1
+\end{itemize}
+$r$
+\par
+
+Rotation Left
+\begin{itemize}
+  \item 1 $\rightarrow$ 3
+  \item 2 $\rightarrow$ 1
+  \item 3 $\rightarrow$ 2
+\end{itemize}
+$r^2$
+
+\par
+Reflection around 2
+\begin{itemize}
+  \item 1 $\rightarrow$ 3
+  \item 2 $\rightarrow$ 2
+  \item 3 $\rightarrow$ 1
+\end{itemize}
+$r^2 \circ s$
+
+\end{multicols}
+
+\begin{multicols}{3}
+Reflection around 1
+\begin{itemize}
+  \item 1 $\rightarrow$ 1
+  \item 2 $\rightarrow$ 3
+  \item 3 $\rightarrow$ 2
+\end{itemize}
+$s$
+
+\par
+Reflection around 3
+\begin{itemize}
+  \item 1 $\rightarrow$ 2
+  \item 2 $\rightarrow$ 1
+  \item 3 $\rightarrow$ 3
+\end{itemize}
+$r \circ s = s \circ r^2$
+\par
+Identity 
+\begin{itemize}
+  \item 1 $\rightarrow$ 1
+  \item 2 $\rightarrow$ 2
+  \item 3 $\rightarrow$ 3
+\end{itemize}
+$r^3, s^2$
+\end{multicols}
+\begin{align*}
+  r^s &= r\cdot(r\cdot s) \\ 
+  &= (r\cdot s) \cdot r^{-1} \\
+  &= s \cdot (r^{-1} \cdot r^{-1}) \\
+  &= s \cdot (r^{-1})^2
+\end{align*}
+
+
+
+(Symmetry of $\triangle, \circ$) = $D_6$
+\pagebreak
+\subsection{n-gon}
+
+
+\begin{multicols}{3}
+Rotation right
+\begin{itemize}
+  \item $k \rightarrow k + 1$ (for $k < n$)
+  \item $n \rightarrow 1$
+\end{itemize}
+$r, |r| = n$
+\par
+Reflection around 1
+\begin{itemize}
+  \item $k \rightarrow n + 2 - k$
+  \item $1 \rightarrow 1$
+\end{itemize}
+$s, |r| = n$
+\par
+My Symmetry
+\begin{itemize}
+  \item $1 \rightarrow k$
+  \item $2 \rightarrow k + 1$
+\end{itemize}
+$r^k$
+\end{multicols}
+So, $\{r, s\}$ generates the group of sym of regular n-gon
+
+(Symmetry of a regular n-gon, $\circ$) = $D_{2n}$
+
+\subsection{Definition}
+
+Rules of dihedral group multiplication in $D_{2n}$
+$\{r, s\}$
+
+\begin{enumerate}[a)]
+  \item $r^n = 1$
+  \item $s^2 = 1$
+  \item $r \cdot s = s \cdot r^{-1}$
+\end{enumerate}
+
+When you have generators $S$ for $G$ and can list $R_1, R_2, R_3$ 
+\underline{all} the rules you need to know to do multiplication in $G$
+Then $\langle S, R_1, R_2, R_3\rangle$ is a ``presentation of the group $G$''
+
+$D_{2n} = \langle r, s | r^n = 1, s^2 = 1, rs = sr^{-1}\rangle$
+
+Fact: There is a finite set of rule $R_1, \dotsc, R_{2000}$
+so $\langle a, b|R_1, \dotsc, R_{2000}\rangle$ ``undecidable word problem''
+
+\section{Symmetric Group}
+
+Given $\Omega$ any set, $S_\Omega = $ The permutations of $\Omega =$ The bijections $f: \Omega \to \Omega$
+
+\begin{example}
+  $\Omega = \{1, 2, 3\}$ 
+
+  $S_n = S_{\{1, 2, \dotsc, n\}}$ has $n!$ elements
+
+  $|S_3| = 6, |D_6| = 6, D_6 \subseteq S_3$
+
+  $|D_{2n}| = 2n$
+
+  $|S_n| = n!$
+\end{example}
+
+\subsection{Cycle Decomposition}
+
+$1 \to 4, 2 \to 1, 3 \to 2, 4 \to 3, 5 \to 5$ can be written as
+$(1432)(5)$
+
+$(a_1 \dotsc a_{m_1})(a_{m_1+1} \dotsc a_{m_2})$ with $a_i$ is disjoint
+represents the function which satisfies
+
+\begin{itemize}
+  \item $a_i$ to $a_{i+1}$ unless $i = m_j$ for some $j$
+  \item $a_{m_j}$ to $a_{m_{j-1}}+1$ $j \neq 1$
+  \item $a_{m_1}$ to $a_1$
+\end{itemize}
+
+$(1)(2)(3)(4)(5)(6)(7) = 1$
+
+$(1442)\circ(3421)=(124)$
+
+$|(123)(45)|=6$
+
+Order of a product of disjoint cycles is the lcm(lengths of the cycles)
