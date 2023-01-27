@@ -38,18 +38,18 @@ A group is a set $G$ with an operation $\cdot$ satisfying:
 
 If $G$ satisfies this, we call it an abelian group
 
-\begin{example*}
+\begin{example}
   $(\ZZ, +), (\QQ, +), (\RR, +), (\CC, +)$
-\end{example*}
+\end{example}
 
 \begin{enumerate}
   \item $0$ is the identity
   \item inverses: $-a$ is the inverse of $a$
 \end{enumerate}
 
-\begin{example*}
+\begin{example}
   $(\QQ \setminus \{0\}, \cdot), (\RR \setminus \{0\}, \cdot), (\CC \setminus \{0\}, \cdot)$ 
-\end{example*}
+\end{example}
 
 \begin{enumerate}
   \item $1$ is the identity
@@ -60,32 +60,32 @@ If $G$ satisfies this, we call it an abelian group
 
 $(V, +)$ is a group
 
-\begin{example*}
+\begin{example}
   For $n$, a natural number, $(\ZZ/n\ZZ, +)$ is a group
-\end{example*}
+\end{example}
 
 On $\ZZ$, we say $a, b$ are $(\text{mod } n)$ equivalent (written $a \equiv b (\text{mod } n)$) 
 if $n$ divides $a-b$
 
 $\ZZ/n\ZZ$ is the set of equivalence classes mod $n$
 
-\begin{example*}
+\begin{example}
   $n = 2$: (odds, evens) which is $\{0_{\text{mod } 2}, 1_{\text{mod } 2}\}$
-\end{example*}
+\end{example}
 
 $17_{\text{mod } 2} + 64_{\text{mod } 2} = 81_{\text{mod } 2} = 1_{\text{mod } 2}$
 
-\begin{example*}
+\begin{example}
   $\ZZ/3\ZZ = \{0_{\text{mod } 3}, 1_{\text{mod } 3}, 2_{\text{mod } 3}\}$
-\end{example*}
+\end{example}
 
-\begin{example*}
+\begin{example}
   $(2\ZZ, +)$ is a group (even numbers)
-\end{example*}
+\end{example}
 
-\begin{example*}
+\begin{example}
   If $(G, \cdot_G)$ and $(H, \cdot_H)$ are groups, then $(G \times H, \cdot_{G} \times \cdot_H)$ is a group
-\end{example*}
+\end{example}
 
 \begin{itemize}
   \item $(g_1, h_1) \cdot_{G \times H} (g_2, h_2) = (g_1 \cdot_G g_2, h_1 \cdot_H h_2)$
@@ -123,34 +123,34 @@ $17_{\text{mod } 2} + 64_{\text{mod } 2} = 81_{\text{mod } 2} = 1_{\text{mod } 2
   In $G$, there is exactly 1 solution to the equation $ax = b$ for a fixed $a, b \in G$
 \end{theorem}
 
-\begin{corollary*}
+\begin{corollary}
   Cancellation laws:
   \[ax = ay \implies x = y\]
   \[xa = ya \implies x = y\]
-\end{corollary*}
+\end{corollary}
 
 \begin{proof}
   If $a\cdot x = b$
-  \begin{align*}
+  \begin{align}
     a^{-1}\cdot a\cdot x &= a^{-1}\cdot b \\
     (a^{-1}\cdot a)\cdot x &=  \\
     1x = x &= \\
-  \end{align*}
+  \end{align}
 \end{proof}
 
-\begin{definition*}
+\begin{definition}
   For $x \in G$, the order of $x$, written $|x|$, is the least $n > 0$ so
 
   \[x^n = \underbrace{x\cdot x\cdot \dotsc \cdot x}_n = 1_G\]
-\end{definition*}
+\end{definition}
 If there is no such $n$, $x$ has ``infinite order''
-\begin{example*}
+\begin{example}
   In $(\RR \setminus \{0\}, \cdot)$, $|5| = \infty$, $|-1| = 2$, $|1| = 1$
-\end{example*}
+\end{example}
 
-\begin{example*}
+\begin{example}
   $(\ZZ/6\ZZ, +)$, $|1_{\text{mod } 6}| = 6$, $|2_{\text{mod } 6}| = 3$, $|3_{\text{mod } 6}| = 2$, $|4_{\text{mod } 6}| = 3$, $|5_{\text{mod } 6}| = 2$
-\end{example*}
+\end{example}
 
 \section{Dihedral Groups}
 
@@ -223,12 +223,12 @@ Identity
 \end{itemize}
 $r^3, s^2$
 \end{multicols}
-\begin{align*}
+\begin{align}
   r^s &= r\cdot(r\cdot s) \\ 
   &= (r\cdot s) \cdot r^{-1} \\
   &= s \cdot (r^{-1} \cdot r^{-1}) \\
   &= s \cdot (r^{-1})^2
-\end{align*}
+\end{align}
 
 
 
