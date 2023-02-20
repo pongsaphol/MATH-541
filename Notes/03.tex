@@ -100,28 +100,35 @@
 \end{proof}
 
 \begin{proposition}
-  If $N \le G$ then for all $u, v \in G, uK = vK$ if and only if $v^{-1}u\in K$
+  If $N \le G$ then for all $u, v \in G, uN = vN$ if and only if $v^{-1}u\in N$
 \end{proposition}
 
 \begin{proof}
-  \text{ }
-  \begin{itemize}
-    \item $\displaystyle G = \bigcup_{b \in G} bK$, $1 \in K \lthen b \in bK$ 
-    \item If $a \in uK \cap vK$ then for $k_1, k_2 \in K$,
-    \begin{align*}
-      u\cdot k_1 &= v \cdot k_2 = a \\
-      v^{-1}u &= k_2^{-1}k_1 \in K
-    \end{align*}
-    Given any $l \in K$, 
-    \[ul = v \cdot (v^{-1} \cdot u \cdot l) \in vK\]
-  \end{itemize}
-
+  Since $N$ is a subgroup of $G$, since $1_G \in N$ then 
+  \[G = \bigcup_{g \in G} gN\]
+  If $x \in uN \cap vN$ then for some $n_1, n_2 \in N$
+  \begin{align*}
+    x = un_1 &= vn_2 \\ 
+    v^{-1}u &= n_2 n_1^{-1} \in N
+  \end{align*}
+  For any $n \in N$
+  \[un = (vv^{-1})un = v(v^{-1}un) \in vN\]
+  So $uN \subseteq vN$, wlog, $vN \subseteq uN$. Therefore $uN = vN$.
 \end{proof}
 
+\begin{definition}
+  The element $gng^{-1}$ is called the \textit{conjugate} of $n \in N$ by $g$.
+  The set $gNg^{-1}$ is called the \textit{conjugate} of $N$ by $g$.
+  if $gNg^{-1} = N$ then $g$ is said to \textit{normalize} $N$. 
+
+  If $N \le G$ called \textit{normal} if for any $g \in G$ normalizes $N$. In another word, $gNg^{-1} = N$ for all $g \in G$, written
+  \[N \trianglelefteq G\]
+\end{definition}
+
 \begin{theorem}
-  For $K \le G$, the following are equivalent
+  For $N \le G$, the following are equivalent
   \begin{itemize}
-    \item $K \trianglelefteq G$
+    \item $N \trianglelefteq G$
     \item $N_G(N) = G$
     \item $gN = Ng$ for all $g \in G$
 
