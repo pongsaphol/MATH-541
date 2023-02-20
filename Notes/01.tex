@@ -8,7 +8,7 @@
 \end{itemize}
 
 
-\chapter{Algebra}
+\chapter{Groups}
 Operations often modeled:
 $+, \cdot$
 
@@ -131,11 +131,11 @@ $17_{\text{mod } 2} + 64_{\text{mod } 2} = 81_{\text{mod } 2} = 1_{\text{mod } 2
 
 \begin{proof}
   If $a\cdot x = b$
-  \begin{align}
+  \begin{align*}
     a^{-1}\cdot a\cdot x &= a^{-1}\cdot b \\
-    (a^{-1}\cdot a)\cdot x &=  \\
-    1x = x &= \\
-  \end{align}
+    (a^{-1}\cdot a)\cdot x &= a^{-1}\cdot b \\
+    1x = x &= a^{-1}\cdot b
+  \end{align*}
 \end{proof}
 
 \begin{definition}
@@ -223,13 +223,12 @@ Identity
 \end{itemize}
 $r^3, s^2$
 \end{multicols}
-\begin{align}
-  r^s &= r\cdot(r\cdot s) \\ 
+\begin{align*}
+  r^2s &= r\cdot(r\cdot s) \\ 
   &= (r\cdot s) \cdot r^{-1} \\
   &= s \cdot (r^{-1} \cdot r^{-1}) \\
   &= s \cdot (r^{-1})^2
-\end{align}
-
+\end{align*}
 
 
 (Symmetry of $\triangle, \circ$) = $D_6$
@@ -278,7 +277,7 @@ When you have generators $S$ for $G$ and can list $R_1, R_2, R_3$
 \underline{all} the rules you need to know to do multiplication in $G$
 Then $\langle S, R_1, R_2, R_3\rangle$ is a ``presentation of the group $G$''
 
-$D_{2n} = \langle r, s | r^n = 1, s^2 = 1, rs = sr^{-1}\rangle$
+$D_{2n} = \langle r, s \mid r^n = 1, s^2 = 1, rs = sr^{-1}\rangle = \{1, r, \dotsc, r^{n-1}, s, rs, \dotsc, rs^{n-1}\}$
 
 Fact: There is a finite set of rule $R_1, \dotsc, R_{2000}$
 so $\langle a, b|R_1, \dotsc, R_{2000}\rangle$ ``undecidable word problem''
@@ -320,3 +319,121 @@ $(1442)\circ(3421)=(124)$
 $|(123)(45)|=6$
 
 Order of a product of disjoint cycles is the lcm(lengths of the cycles)
+
+\section{Homomorphisms and Isomorphisms}
+
+\begin{definition}
+  A homorphism from $(G, \cdot_G)$ to $(H, \cdot_H)$ is a function
+  $f: G \to H$ such that $$f(x \cdot_G y) = f(x) \cdot_H f(y)$$ for all $x, y \in G$  
+\end{definition}
+
+\begin{itemize}
+  \item $f(x^{-1}) = f(x)^{-1}$
+  \begin{align*}
+    f(x) &= f(1_G \cdot_G x) \\
+    &= f(1_G) \cdot_H f(x) \\
+    f(x) \cdot_H (f(x))^{-1} &= f(1_G) \cdot_H f(x) \cdot_H (f(x))^{-1} \\
+    1_H &= f(1_G)
+  \end{align*}
+  \[1_H = f(1_G) = f(x \cdot_G x^{-1}) = f(x)\cdot_H f(x^{-1})\]
+  \[1_H = f(1_G) = f(x^{-1} \cdot_G x) = f(x^{-1})\cdot_H f(x)\]
+\end{itemize}
+
+\begin{definition}
+  If $f$ is a bijection and a homorphism, then $f$ is an isomorphism
+\end{definition}
+
+\begin{example}
+    $\cdot id: G \to G$
+
+    $\cdot^{-1}: G \to G, x \mapsto x^{-1}$
+
+    $(x \cdot y)^{-1} = (x^{-1}) \cdot (y^{-1})$
+
+    is an isomorphism if and only if $G$ is abelian
+
+    $xyx^{-1}y^{-1} = 1$
+\end{example}
+
+\begin{example}
+  $e^x: (\RR, +) \to (\RR, \cdot), f(x+y)=f(x)\cdot f(y)$
+  is an isomorphism
+\end{example}
+
+\begin{example}
+  $f : \ZZ/6\ZZ \to \ZZ/3\ZZ$
+  \begin{itemize}
+    \item $0 \to 0$
+    \item $1 \to 1$
+    \item $2 \to 2$
+    \item $3 \to 0$
+    \item $4 \to 1$
+    \item $5 \to 2$
+  \end{itemize}
+  is a homorphism NOT an isomorphism
+\end{example}
+
+\begin{definition}
+  $G$ and $H$ is isomorphic if there is a $f: G \to H$ which is an isomorphism 
+  (written $G\cong H$)
+\end{definition}
+
+If $G\cong H$ then 
+\begin{itemize}
+  \item $G$ is a belian iff $H$ is abelian
+\end{itemize}
+
+\textbf{Abelian:} For every $x, y$ $x\cdot_G y = y\cdot_G x$
+\[f(y)\cdot_H f(x) = f(y\cdot_G x) = f(x\cdot_G y) = f(x)\cdot_Hf(y)\]
+So, any 2 elements
+
+If $f$ is a $\cong$, $f: G \to H$ and $x \in G$ has order 2
+Then $f(x) \in H$ has order 2
+\begin{align*}
+  x^2 &= 1_G \\
+  (f(x))^2 = f(x)\cdot f(x) &= f(x\cdot x) = f(1_G) = 1_H
+\end{align*}
+
+\textbf{Recall} $D_{2n} = \langle r, s \mid r^n = 1, s^2 = 1, rs=sr^{-1}\rangle$
+
+If $G = \langle g_1, \dotsc, g_n \mid R_1, R_2, \dotsc \rangle$ and 
+$h_1, \dotsc, h_n \in H$ so $R_1(h_1\dotsc h_n)\dotsc$ 
+Then $f: g_i \mapsto h_i$ is a homomorphism 
+
+\section{Group Actions}
+\begin{definition}
+  A group action is a function
+  \[\alpha: G \times A \to A\]
+  so \[\alpha(g, \alpha(h, a)) = \alpha(g\cdot h, a)\]
+  We write $g \cdot a$ for $\alpha(g, a)$
+  \[g\cdot(h\cdot a) = (g\cdot h)\cdot a\]
+\end{definition}
+
+\begin{itemize}
+  \item $1_G \cdot a = a$ for any $a \in A$
+\end{itemize}
+
+For any $g \in G$ the function $g\cdot: A \to A$, $a \mapsto g\cdot a$ is a bijection of $a$.
+\begin{align*}
+(g\cdot(g^{-1}\cdot_G))&: A \to A\\
+  &= (g\cdot g^{-1})\cdot a\\
+  &= 1_G\cdot a = a\\
+  g^{-1}(g\cdot a) &= a
+\end{align*} 
+
+Since this function has an inverse (as a funciton) it is bijective
+
+\textbf{Recall: } $S_A$ is the group of all permutations of $A$
+
+Get a function $\sigma: G \to S_A$ and $\sigma(g) = $ the function $a \mapsto g\cdot a$
+
+\textbf{Observation: }$\sigma$ is a homomorphism
+\[\sigma(g\cdot h) = \sigma(g)\cdot\sigma(h)\]
+
+\begin{example}
+  $(\RR, +)$ acts on $A = \{1, 2, 3\}$ 
+
+  $g\cdot a = a$
+
+  $\sigma: \RR \to S_3$, $g \mapsto 1_{S_3}$
+\end{example}

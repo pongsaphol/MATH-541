@@ -1,0 +1,130 @@
+\chapter{Quotient Groups and Homomorphisms}
+
+\section{Definition and Examples}
+
+\begin{definition}
+  If $\varphi: G \to H$ is a homomorphism then $\ker(\varphi) = \{x \in G \mid \varphi(x) = 1_H\}$
+\end{definition}
+
+\begin{lemma}
+  $\ker(\varphi) \le G$
+\end{lemma}
+
+\begin{proof}
+  Proof eash properties of subgroup 
+  \begin{itemize}
+    \item Closed identity, Since $\varphi(1_G) = 1_H$ 
+    \begin{align*}
+      \varphi(1_G) = \varphi(1_G1_G) = \varphi(1_G)\cdot\varphi(1_G) = 1
+    \end{align*}
+    So, $1_G \in \ker(\varphi)$
+    \item Closed under inverses, if $x \in ker(\varphi)$
+    \begin{align*}
+      \varphi(x^{-1}) &= (\varphi(x))^{-1} = (1_H)^{-1} = 1_H \\
+      1_H = \varphi(1_G) &= \varphi(x^{-1}x) = \varphi(x)\cdot \varphi(x^{-1})\\
+    \end{align*}
+    So, $x^{-1} \in \ker(\varphi)$
+    \item Closed under multiplication, if $x,y \in \ker(\varphi)$
+    \begin{align*}
+      \varphi(xy) &= \varphi(x) \cdot \varphi(y) \\
+      &= 1_H \cdot 1_H = 1_H
+    \end{align*}
+    So, $xy \in \ker(\varphi)$
+  \end{itemize}
+\end{proof}
+
+\begin{definition}
+  Given $\varphi: G \to H$ a homomorphism and $K = \ker(\varphi)$ 
+  For any $a \in H$, let $$X_a = \{x \in G \mid \varphi(x) = a\}$$
+  then
+  $$G/K = (\{X_a \mid a \in H\}, \circ)$$ where $$X_a \circ X_b = X_{ab}$$
+\end{definition}
+
+\begin{lemma}
+  If $\varphi: G \to H$ is a homomorphism, $K = \ker(\varphi)$, and $\varphi(b) = a$ 
+  then $X_a = bK$ where $bK = \{b\cdot z \mid z \in K\}$
+\end{lemma}
+
+\begin{proof}
+  The goal is to show $X_a = bK$
+  \begin{itemize}
+    \item $X_a \supseteq bK$, Given $y \in bK, y = b\cdot z$ for some $z \in K$
+    \[\varphi(y) = \varphi(b\cdot z) = \varphi(b)\cdot\varphi(z) = a \cdot 1_H = a\]
+    \item $X_a \subseteq bK$, Given $\varphi(y) = a$
+    \[\varphi(b^{-1}y) = \varphi(b^{-1})\varphi(y) = (\varphi(b))^{-1}\cdot\varphi(y) = a^{-1}\cdot a = 1\]
+  \end{itemize}
+  Therefore $X_a = bK$
+\end{proof}
+
+% \begin{proposition}
+%   Let $\varphi: G \to H$ be a homomorphism of groups with kernel $K$. Let $X_a \in G/K$ be the fiber above $a$, 
+%   i.e., $X_a = \varphi^{-1}(a)$ Then
+%   \begin{enumerate}
+%     \item For any $u \in X_a, X_a = \{uk \mid k \in K\}$
+%     \item For any $u \in X_a, X_a = \{ku \mid k \in K\}$
+%   \end{enumerate}
+% \end{proposition}
+
+% \begin{proof}
+
+% \end{proof}
+
+\begin{definition}
+  For any $N \le G$ and for any $g \in G$ let 
+  \[gN = \{gn \mid n \in N\}\]
+  and 
+  \[Ng = \{ng \mid n \in N\}\]
+\end{definition}
+
+\begin{theorem}
+  Let $G$ be a group and $K$ be the kernel of some homomorphism. 
+  Then the set whose elements are the left cosets of $K$ in $G$ with operation defined by
+  \[uK \circ vK = (uv)K\]
+  forms a group $G/K$.
+\end{theorem}
+
+\begin{proof}
+  Let $X, Y \in G/K$ and let $Z = XY$ in $G/K$. Since $K$ is the kernel of some homomorphism,
+  $\varphi: G \to H$, so $X = \varphi^{-1}(a)$ and $Y = \varphi^{-1}(b)$ for some $a, b \in H$.
+  By definition of the operation in $G/K$, $Z = \varphi^{-1}(ab)$. 
+
+  Let $u, v$ be arbitrary representatives of $X, Y$ ($\varphi(u) = a, \varphi(v)=b$ and $X = uK, Y = vK$)
+
+  GOAL: show $uv \in Z$
+  \begin{align*}
+    uv \in Z &\iff uv \in \varphi^{-1}(a, b) \\
+    &\iff \varphi(uv) = ab \\
+    &\iff \varphi(u)\varphi(v) = ab \\ 
+  \end{align*}
+  Therefore $Z$ is the (left) coset $(uv)K$.
+\end{proof}
+
+\begin{proposition}
+  If $N \le G$ then for all $u, v \in G, uK = vK$ if and only if $v^{-1}u\in K$
+\end{proposition}
+
+\begin{proof}
+  \text{ }
+  \begin{itemize}
+    \item $\displaystyle G = \bigcup_{b \in G} bK$, $1 \in K \lthen b \in bK$ 
+    \item If $a \in uK \cap vK$ then for $k_1, k_2 \in K$,
+    \begin{align*}
+      u\cdot k_1 &= v \cdot k_2 = a \\
+      v^{-1}u &= k_2^{-1}k_1 \in K
+    \end{align*}
+    Given any $l \in K$, 
+    \[ul = v \cdot (v^{-1} \cdot u \cdot l) \in vK\]
+  \end{itemize}
+
+\end{proof}
+
+\begin{theorem}
+  For $K \le G$, the following are equivalent
+  \begin{itemize}
+    \item $K \trianglelefteq G$
+    \item $N_G(N) = G$
+    \item $gN = Ng$ for all $g \in G$
+
+    \item $gNg^{-1} \subseteq N$ for all $g \in G$
+  \end{itemize}
+\end{theorem}
