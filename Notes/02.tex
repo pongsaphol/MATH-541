@@ -58,7 +58,14 @@
   If $H = \langle x \rangle$, then $|x| = n$.
 \end{proposition}
 
-\begin{proposition}
+\begin{proof}
+  Let $|x| = n$ then $1, x, x^2, \dotsc, x^{n-1}$ are distinct
+
+
+  If $x^a = x^b$ for $0\le a < b < n$ then $x^{b-a} = 1$ but $b-a < n$ contradict
+\end{proof}
+
+\begin{proposition}\label{thm:gcdcyc}
   Let $G$ be an arbitrary group, $x \in G$ and let $m, n \in \ZZ$. If $x^n = 1$ and
 $x^m = 1$, then $x^d = 1$, where $d = (m, n)$.  
 \end{proposition}
@@ -66,6 +73,28 @@ $x^m = 1$, then $x^d = 1$, where $d = (m, n)$.
 \begin{proof}
   By the Euclidean Algorithm, there exists $q, r \in \ZZ$ such that $d = mr + ns$ where $d = (m, n)$. Thus
   $$x^d = x^{mr+ns} = (x^{m})^r(x^n)^s = 1^r1^s=1$$
+\end{proof}
+
+\begin{theorem}
+  For any two cyclic groups of the same order are isomorphic.
+\end{theorem}
+
+\begin{proof}
+  Suppose $\langle x \rangle$ and $\langle y\rangle$ are both cyclic groups of order $n$.
+  Let $\varphi: \langle x \rangle \to \langle y\rangle$ be defined by $\varphi(x^k) = y^k$
+  \begin{itemize}
+    \item $\varphi$ is well defined, if $x^r = x^s$ then $\varphi(x^r) = \varphi(x^s)$. Because $x^r = x^s$ 
+    then from proposition \ref{thm:gcdcyc}, $n \mid r-s$, $r = tn+s$ then
+    \begin{align*}
+      \varphi(x^r) &= \varphi(x^{tn + s}) \\
+      &= y^{tn+s} \\
+      &= (y^n)^ty^s \\
+      &= y^s \\
+      &= \varphi(x^s) 
+    \end{align*}
+    \item $\varphi$ is injective
+    \item $\varphi$ is surjective 
+  \end{itemize}
 \end{proof}
 
 \begin{theorem}
@@ -77,9 +106,19 @@ $x^m = 1$, then $x^d = 1$, where $d = (m, n)$.
   \begin{enumerate}
     \item If $|x| = \infty$, then $|x^a| = \infty$
     \item If $|x| = n < \infty$, then $|x^a| = \frac{n}{(n, a)}$
-    \item 
+    \item If $|x| = n < \infty$ and $a \mid n$ then $|x^a| = \frac{n}{a}$
   \end{enumerate} 
 \end{proposition}
+\begin{proof}
+  \text{ }
+  \begin{enumerate}
+    \item Proof by contradiction, Suppose $|x| = \infty$ and $|x^a| = m < \infty$
+    then, $1 = (x^a)^m = x^{am}$ and $x^{-am} = (x^{am})^{-1} = 1^{-1} = 1$.
+    Since either $am$ or $-am$ is greater than $0$, then it is contradicts $|x| = \infty$
+    \item Since $x^n = 1$ so $(x^n)^\frac{a}{(n, a)} = (x^a)^\frac{n}{(n, a)}$ then $|x^a| = \frac{n}{(n, a)}$.
+    \item Just a special case of 2.
+  \end{enumerate}
+\end{proof}
 
 \begin{theorem}
   If $H = \langle x \rangle$ and $|x| = n$ then $x^a = 1$ if and only if $n \mid a$.
@@ -94,12 +133,12 @@ $x^m = 1$, then $x^d = 1$, where $d = (m, n)$.
   
   Then we want to show $\langle y \rangle = K$. 
   \begin{itemize}
-    \item $\langle y \rangle \subseteq K$ Obvious
-    \item $\langle y \rangle \supseteq K$ Given $x^b \in K$ we can write $b = am + r$ with $a \leq r < a$ 
+    \item $\langle y \rangle \subseteq K$: Obvious
+    \item $\langle y \rangle \supseteq K$: Given $x^b \in K$ we can write $b = am + r$ with $0 \leq r < a$ 
     \begin{align*}
       x^b &= x^{am+r} = (x^a)^mx^r \\
-    &= y^m \underbrace{x^r}_{\in K} \\
-    x^r &= \underbrace{y^{-m}}_{\in K}\underbrace{x^b}_{\in K}
+    &= y^m x^r \text{ }(x^r \in K) \\
+    x^r &= y^{-m}x^b\text{ }(y^{-m}, x^b \in K)
     \end{align*}
     So, $x^r \in K$ so $r = 0$, $x^b = y^m$
   \end{itemize}

@@ -42,13 +42,13 @@
 
 \begin{lemma}
   If $\varphi: G \to H$ is a homomorphism, $K = \ker(\varphi)$, and $\varphi(b) = a$ 
-  then $X_a = bK$ where $bK = \{b\cdot z \mid z \in K\}$
+  then $X_a = bK$ where $bK = \{bz \mid z \in K\}$
 \end{lemma}
 
 \begin{proof}
   The goal is to show $X_a = bK$
   \begin{itemize}
-    \item $X_a \supseteq bK$, Given $y \in bK, y = b\cdot z$ for some $z \in K$
+    \item $X_a \supseteq bK$, Given $y \in bK, y = bz$ for some $z \in K$
     \[\varphi(y) = \varphi(b\cdot z) = \varphi(b)\cdot\varphi(z) = a \cdot 1_H = a\]
     \item $X_a \subseteq bK$, Given $\varphi(y) = a$
     \[\varphi(b^{-1}y) = \varphi(b^{-1})\varphi(y) = (\varphi(b))^{-1}\cdot\varphi(y) = a^{-1}\cdot a = 1\]
@@ -134,4 +134,192 @@
 
     \item $gNg^{-1} \subseteq N$ for all $g \in G$
   \end{itemize}
+\end{theorem}
+
+\section{More on Cosets and Lagrange's Theorem}
+
+\begin{theorem}[Lagrange's Theorem]
+  Let $G$ be a finite group and $H \le G$, then $$|H| \mid |G|$$  
+  and $$\frac{|G|}{|H|}$$ is the number of $H$-cosets in $G$.
+\end{theorem}
+
+\begin{definition}
+  If $H \le G$. then the ``index of $H$ in $G$'' is the number of 
+  left $H$ cosets in $G$
+\end{definition}
+
+\begin{corollary}
+  If $G$ is a finite group and $x \in G$ then $|x| \mid |G|$, So, $x^|G|$ = 1
+\end{corollary}
+
+\begin{proof}
+  let $H = \langle x \rangle \le G$ So $|x| \mid |G|$
+  Since for $x^a = 1$ if and only if $|x| \mid a$, So $x^{|G|} = 1$
+\end{proof}
+
+\begin{corollary}
+  If $|G| = p$ is prime, then $G \cong \ZZ/p\ZZ$
+\end{corollary}
+
+\begin{proof}
+  Take any $x \in G \setminus \{1\}$, $|x| \mid |G|$, So, $|x| = p$
+  Since $\langle x \rangle = H \le G$ and $p = |x| = |H|$ therefore $H = G$
+\end{proof}
+
+\begin{theorem}
+  For any $n \in \NN$ either $p \mid n$ or $p \mid n^{p-1} -1$
+\end{theorem}
+
+\begin{theorem}[Sylow]
+  If $G$ is finite of order $p^\alpha \cdot m$ where $p \nmid m$ where $p$ is prime.
+  Then $G$ has a subgroup of size $p^\alpha$.
+\end{theorem}
+
+\begin{definition}
+  If $H, K \le G$ then $$HK = \{hk \mid h \in H, k \in K\} = \bigcup_{h \in H} hK$$
+\end{definition}
+
+\begin{lemma}
+  If $cK$ intersects $H$ then $|cK \cap H| = |K \cap H|$
+\end{lemma}
+
+\begin{proof}
+  Let $a \in cK \cap H$ let $f : K \cap H \to cK \cap H$, $x \mapsto ax$
+
+  Claim: $x\in K \cap H \implies ax \in cK \cap H$
+  $ax \in H$ because $a, x \in H \le G$
+
+  $a = cl$ for some $l \in K$ because $a \in cK$
+  $ax = c\underbrace{(lx)}_{\in K} \in cK$
+  So, $f$ is now injective
+
+  Claim: If $y \in cK \cap H$ then $a^{-1}y \in K \cap H$
+  $y \in cK$, $y = cl$, $a^{-1}y = (a^{-1}cl \in K$
+
+\end{proof}
+
+\begin{theorem}
+  If $H, K$ are finite subgroups of $G$ then 
+  \[|HK| = \frac{|H|\cdot|K|}{|H \cap K|}\]
+\end{theorem}
+
+\begin{proof}
+  $|HK| = |\displaystyle\bigcup_{h \in H} hK| = |K| \cdot \text{number of $K$-coests of the form $hK$ for $h \in H$}$
+  Each $h \in H$ define a coset $hK$
+\end{proof}
+
+\begin{proposition}
+  $HK \le G$ if and only if $HK = KH$
+\end{proposition}
+
+\begin{proof}
+  $\Leftarrow$
+  \begin{itemize}
+    \item $(hk)^{-1} = k^{-1}h^{-1} \in KH = HK$
+    \item 
+  \end{itemize}
+  $\Rightarrow$, $H, K \le HK, H = H\cdot 1 \subseteq HK, K = 1\cdot K \subseteq HK$
+
+  So, $KH \subseteq HK$
+
+  Let $y \in HK, y = hk, y^{-1} = k^{-1}h^{-1} \in KH$
+
+  So $HK \subseteq KH$
+\end{proof}
+
+\begin{theorem}[First Isomorphism Theorem]
+  If $\varphi: G \to H$ is a homomorphism then
+  \begin{itemize}
+    \item $\ker(\varphi) \trianglelefteq G$
+    \item $G/\ker(\varphi) \cong \varphi(G)$
+  \end{itemize} 
+\end{theorem}
+
+\begin{definition}
+  $\varphi(G) = \text{im}(\varphi) = \{y \in H \mid \exists x \in G, \varphi(x) = y\}$
+\end{definition}
+\begin{proof}
+  Build $f: G \to G/\ker(\varphi)$, $a\cdot K \mapsto \varphi(a)$ ($K = \ker(\varphi)$)
+
+  $aK = bK \iff b^{-1}a \in K$
+
+  If $aK = bK$ want $\varphi(a) = \varphi(b)$
+
+  \begin{align*}
+    \varphi(a) &= \varphi(b \cdot b^{-1}a) \\
+    &= \varphi(b) \cdot \varphi(b^{-1}a) \\
+    &= \varphi(b) \cdot 1 \\
+    &= \varphi(b)
+  \end{align*}
+
+  \begin{align*}
+    f(aK \cdot bK) &= f(ab \cdot K) = 
+  \end{align*}
+
+\end{proof}
+
+\begin{corollary}
+  Let $\varphi: G \to H$ be a homomorphism
+  \begin{enumerate}
+    \item $\varphi$ is 1-to-1 iff $\ker(\varphi) = \{1_G\}$
+    \item $|G/\ker(\varphi)| = |\varphi(G)|$
+  \end{enumerate}
+\end{corollary}
+
+\begin{theorem}[2nd or ``Diamond'' isonorphism theorem]
+  Given $G$, a group, $A, B \le G$ and $A \le N_G(B)$
+  (i.e., $aBa^{-1} = B$ for every $a \in A$)
+  then 
+  \begin{itemize}
+    \item $AB \le G$ 
+    \item $B \unlhd AB$ 
+    \item $A \cap B \unlhd A$
+    \item $AB/B \cong A / (A \cap B)$
+  \end{itemize}
+\end{theorem}
+
+\begin{proof}
+  \text{ }
+  \begin{itemize}
+    \item 
+  For $B \unlhd AB$.
+  For any $a \in A, b \in B$
+  \begin{align*}
+    abB(ab)^{-1} &= B \\
+    abB(ab)^{-1} &=a(bBb^{-1})a^{-1} = aBa^{-1} = B \\
+  \end{align*}
+  \item For $A \cap B \unlhd A$
+
+  we want for any $a \in A$, $a(A \cap B) a^{-1} = A \cap B$
+  \begin{align*}
+    a(A \cap B) a^{-1} &\subseteq aAa^{-1} = A \\
+    a(A \cap B) a^{-1} &\subseteq aBa^{-1} = B \\
+  \end{align*}
+  Given $y \in A \cap B$, for any $a \in A$, WANT $y \in a(A \cap B) a^{-1}$
+  \begin{align*}
+    a^{-1}ya &\in a^{-1}(A\cap B)A \subseteq A \cap B \\
+    y = a(a^{-1}ya)a^{-1} &\in a(A \cap B)A^{-1}
+  \end{align*}
+  Therefore $a(A \cap B) a^{-1} = A \cap B$, so $A \cap B \unlhd A$
+  \item WANT $\varphi: A \to AB/B$
+  \begin{align*}
+    x &\in ab \cdot B = aB \\
+    x &= ab \cdot b' (\text{for some }b' \in B)\\
+    &= a\cdot (bb')(\text{for some }b' \in B)
+  \end{align*}
+  $\varphi(a) = aB$
+  \[A \to AB \to AB/B\]
+  \[a \mapsto a \mapsto AB\]
+  \begin{align*}
+    \varphi(a \cdot a') &= a\cdot a' B \\
+    \varphi(a)\cdot \varphi(a') &= aB\cdot a'B = aa'B
+  \end{align*}
+  $\varphi$ is onto. For any $ab \in AB$
+  \end{itemize}
+
+\end{proof}
+
+\begin{theorem}[The 3rd theorem]
+  Given $G$, a group, $H, K \unlhd G$ with $H \unlhd K$ Then
+  $K/H \unlhd G/H$ and $(G/H)/(K/H) \cong(G/K)$
 \end{theorem}
