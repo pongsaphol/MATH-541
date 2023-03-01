@@ -143,13 +143,25 @@
   and $$\frac{|G|}{|H|}$$ is the number of $H$-cosets in $G$.
 \end{theorem}
 
+\begin{proof}
+  let $|H| = n$ and $k$ be the number of $H$-cosets in $G$. By the definition, the map
+  \begin{align*}
+    H &\to gH \\
+    h &\mapsto gh
+  \end{align*}
+  So
+  \[|gH| = |H| = n\]
+  Since $G$ is partitioned into $k$ disjoint subsets each of which has cardinality $n$, $|G| = kn$.
+  Therefore, $k = \frac{|G|}{|H|}$.
+\end{proof}
+
 \begin{definition}
   If $H \le G$. then the ``index of $H$ in $G$'' is the number of 
-  left $H$ cosets in $G$
+  left $H$ cosets in $G$ and denoted by $|G : H|$
 \end{definition}
 
 \begin{corollary}
-  If $G$ is a finite group and $x \in G$ then $|x| \mid |G|$, So, $x^|G|$ = 1
+  If $G$ is a finite group and $x \in G$ then $|x| \mid |G|$, So, $x^{|G|}$ = 1
 \end{corollary}
 
 \begin{proof}
@@ -204,28 +216,41 @@
 \end{theorem}
 
 \begin{proof}
-  $|HK| = |\displaystyle\bigcup_{h \in H} hK| = |K| \cdot \text{number of $K$-coests of the form $hK$ for $h \in H$}$
-  Each $h \in H$ define a coset $hK$
+  $|HK| = |\displaystyle\bigcup_{h \in H} hK| = |K| \cdot \text{number of $K$-coests of the form $hK$ for $h \in H$}$.
+  Each $h \in H$ define a coset $hK$. But $h_1K = h_2K \iff h_2^{-1}h_1 \in K$ Thus
+  \[h_1K = h_2K \iff h_2^{-1}h_1 \in H \cap K \iff h_1(H \cap K)= h_2(H \cap K)\]
+  The number of distinct $K$-coset of the form $hK$ for $h \in H$ is the number of distinct $H\cap K$-cosets $h(H \cap K)$ for $h \in H$.
+  By Lagrange Theorem, equal $\frac{|H|}{|H \cap K|}$
 \end{proof}
 
 \begin{proposition}
-  $HK \le G$ if and only if $HK = KH$
+  For $H, K \le G$ then $HK \le G$ if and only if $HK = KH$
 \end{proposition}
 
 \begin{proof}
-  $\Leftarrow$
+  $\Leftarrow$ assume $HK = KH$
   \begin{itemize}
     \item $(hk)^{-1} = k^{-1}h^{-1} \in KH = HK$
-    \item 
+    \item $(h_1k_1)(h_2k_2) = (h_1k_1)(k_3h_3) = h_1k_4h_3 = k_4h_5h_3 = k_4h_6 \in KH = HK$
   \end{itemize}
-  $\Rightarrow$, $H, K \le HK, H = H\cdot 1 \subseteq HK, K = 1\cdot K \subseteq HK$
+  $\Rightarrow$ Assume $HK \le G$ 
+  \begin{itemize}
+    \item 
+  $H, K \le HK$ because $H = H\cdot 1 \subseteq HK, K = 1\cdot K \subseteq HK$
+    
+  So, for $a \in H, b \in K$, $a, b \in HK$ then $ba \in HK$. Therefore $KH \subseteq HK$
 
-  So, $KH \subseteq HK$
-
-  Let $y \in HK, y = hk, y^{-1} = k^{-1}h^{-1} \in KH$
+  \item Let $y \in HK, y = hk, y^{-1} = k^{-1}h^{-1} \in KH$
 
   So $HK \subseteq KH$
+  \end{itemize}
 \end{proof}
+\begin{corollary}
+  If $H, K \le G$ and $H \le N_G(K)$. Then $HK \le G$.
+  In particular, if $K \unlhd G$ then $HK \le G$ for any $H \le G$.
+\end{corollary}
+
+\section{The Isomorphism Theorems}
 
 \begin{theorem}[First Isomorphism Theorem]
   If $\varphi: G \to H$ is a homomorphism then
@@ -239,7 +264,20 @@
   $\varphi(G) = \text{im}(\varphi) = \{y \in H \mid \exists x \in G, \varphi(x) = y\}$
 \end{definition}
 \begin{proof}
-  Build $f: G \to G/\ker(\varphi)$, $a\cdot K \mapsto \varphi(a)$ ($K = \ker(\varphi)$)
+  \text{ }
+  \begin{itemize}
+    \item for any $x \in \ker(\varphi)$, for any $g \in G$
+    \begin{align*}
+      \varphi(gxg^{-1}) &= \varphi(g)\varphi(x)\varphi(g^{-1}) \\
+      &= \varphi(g)\cdot 1_H\cdot \varphi(g^{-1}) \\
+      &= \varphi(g)\varphi(g^{-1}) \\
+      &= \varphi(g)\varphi(g)^{-1} \\
+      &= 1_H
+    \end{align*}
+    Since $\varphi(gxg^{-1}) = 1_H$, So $gxg^{-1} \in \ker(\varphi)$.
+    Therefore $\ker(\varphi) \trianglelefteq G$
+    \item
+  Let $f: G \to G/\ker(\varphi)$, $a\cdot K \mapsto \varphi(a)$ ($K = \ker(\varphi)$)
 
   $aK = bK \iff b^{-1}a \in K$
 
@@ -256,13 +294,14 @@
     f(aK \cdot bK) &= f(ab \cdot K) = 
   \end{align*}
 
+  \end{itemize}
 \end{proof}
 
 \begin{corollary}
   Let $\varphi: G \to H$ be a homomorphism
   \begin{enumerate}
-    \item $\varphi$ is 1-to-1 iff $\ker(\varphi) = \{1_G\}$
-    \item $|G/\ker(\varphi)| = |\varphi(G)|$
+    \item $\varphi$ is injective iff $\ker(\varphi) = \{1_G\}$
+    \item $|G : \ker(\varphi)| = |\varphi(G)|$
   \end{enumerate}
 \end{corollary}
 
