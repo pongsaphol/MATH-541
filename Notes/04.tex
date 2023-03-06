@@ -1,0 +1,111 @@
+\chapter{Group Actions}
+
+% A group action $G$ on $A$ means
+
+For any $g \in G$ we have 
+\begin{align*}
+  \sigma_g: A &\to A \\
+  a &\mapsto g\cdot a 
+\end{align*}
+
+$\varphi: g \mapsto \sigma_g$
+
+\begin{itemize}
+  \item $g \cdot (h \cdot a) = gh \cdot a$
+  \item $1 \cdot a = a$
+\end{itemize}
+\begin{example}
+  $\varphi: G \to S_A$ is a homomorphism
+  $g\cdot a$ = $\varphi(g)(a)$, then 
+  $\varphi$ is homomorphism then $G$ action on A by $g \cdot a = \varphi(g)(a)$ 
+\end{example}
+
+\begin{proof}
+  \begin{align*}
+    g\cdot(h\cdot a) &= \varphi(g)(\varphi(h)(a)) \\
+    &=(\varphi(g)\circ\varphi(h))(a) \\
+    &=\varphi(gh)(a) \\
+    &=gh\cdot a
+  \end{align*}
+  \begin{align*}
+    1\cdot a &= \varphi(1)(a) \\
+    &= 1_{S_A}(a) \\
+    &=a
+  \end{align*}
+\end{proof}
+
+\begin{example}
+  The Kernel of the action $G$ on $A$ is 
+  \begin{align*}
+    \{g \in G \mid ga = a\ \forall a \in A\} &= \{g \mid \sigma_g = id_A = 1_{S_A}\} \\
+  \end{align*}
+\end{example}
+
+\begin{example}
+  For each $a \in A$, the stabilizer of $a$ is
+  \[G_a = \{g \in G \mid g \cdot a = a\}\]
+\end{example}
+
+\begin{observation}
+  If $G$ acts on $A$, faithfully then
+  \[G \cong \varphi(G)\]
+\end{observation}
+
+\begin{proof}
+  $G \cong G/\ker(\varphi) \cong \phi(G) \subseteq S_A$
+\end{proof}
+
+
+\section{Group Actions and Permutation Representations}
+
+\begin{definition}
+  Let $G$ be a group, $\varphi: G \to S_A$ is a ``permutation representation'' of $G$ into $S_A$
+\end{definition}
+
+\begin{proposition}[Orbit Equivalence Relations]
+  Let $G$ acts on $A$. Define the relation $\sim$ on $A$ by
+  $a \sim b$ if $a = gb$ for some $g\in G$
+  Then $\sim$ is an equivalence relation
+
+  For each $a \in A$, $|[a]|$ is $|G : G_a|$
+\end{proposition}
+
+\begin{proof}
+  Check $\sim$
+  \begin{itemize}
+    \item (reflexive $a \sim a$) $1_G\cdot a = a$
+    \item (symmetric $a \sim b \implies b \sim a$) $\sigma_(g^{-1}) = (\sigma_g)^{-1}$
+    \item (transitive $a \sim b \land b \sim c \implies a \sim c$) 
+    \begin{align*}
+      h\cdot b &= a \\
+      h\cdot g\cdot c &= a \\
+      (hg)\cdot c &= a \\
+    \end{align*}
+  \end{itemize}
+
+  Every element of $G$  
+\end{proof}
+
+\begin{definition}
+  Let $G$ acts on $A$. 
+  \begin{itemize}
+    \item $[a] = \{b \mid a \sim b\}$ is called the orbit of $G$ containing $a$
+    \item $a \sim b$ is said ``$a$ and $b$ are equivalent''
+    \item The action of $G$ on $A$ is \textbf{transitive} if there is only 1 orbit (orbit class)
+  \end{itemize}
+\end{definition}
+
+\subsection{cycle decomposition}
+
+\begin{example}
+  Every element $\sigma \in S_A$ has a cycle decomposition
+  \[\sigma = (a_1\ a_2\ \dotsc)(b_1\ b_2\ \dotsc)\dotsc\]
+\end{example}
+
+\begin{theorem}
+  Cycle decomposition are unique up to  permutiting between cycles and rotating the cycles
+\end{theorem}
+
+\begin{theorem}
+  If $\sigma \in S_A$, then $\sigma$ is a product of distinct elements $(n\ x)$ or $(n\ y)$ for $n \in A, x,y \notin A$
+\end{theorem}

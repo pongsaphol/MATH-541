@@ -362,3 +362,41 @@
   Given $G$, a group, $H, K \unlhd G$ with $H \unlhd K$ Then
   $K/H \unlhd G/H$ and $(G/H)/(K/H) \cong(G/K)$
 \end{theorem}
+
+\section{Transpositions and the Alternating Group}
+\subsection{The Alternating Group}
+ Let $x_1, \dotsc, x_n$ be independent variables and let $\Delta$ be the polynomial
+  \[\Delta = \prod_{1 \le i < j \le n}(x_i - x_j)\]
+  For each $\sigma \in S_n$ let $\sigma$ act on $\Delta$ by permuting the variable in the same way as $\sigma$
+  \[\sigma(\Delta) = \prod_{1 \le i < j \le n}(x_{\sigma(i)} - x_{\sigma(j)})\]
+  For each $\sigma \in S_n$ let 
+  \[\eps(\sigma) = \begin{cases}
+    1 & \text{if } \sigma(\Delta) = \Delta \\
+    -1 & \text{if } \sigma(\Delta) = -\Delta 
+  \end{cases}\]
+  
+\begin{definition}
+  \text{ }
+  \begin{itemize}
+    \item $\eps(\sigma)$ is call the sign of $\sigma$
+    \item if $\eps(\sigma) = 1$, $\sigma$ is called an even permutation, if $-1$ it is called an odd permutation
+  \end{itemize}
+\end{definition}
+
+\begin{proposition}
+  The map $\eps: S_n \to \{1, -1\}$ is a homomorphism
+\end{proposition}
+
+\begin{proof}
+  Let $k_1$ be the number of inversions in $\sigma$ and $k_2$ be the number of inversions in $\tau$
+  Obviously, $\eps(\sigma) = (-1)^{k_1}$ and $\eps(\tau) = (-1)^{k_2}$.
+  Let $k$ be the number of inverstion in $\sigma \circ \tau$, so, $k = k_1 + k_2 - 2\cdot (\text{number of inversion in the same position})$.
+  Hence, $\eps(\sigma \circ \tau) = (-1)^{k} = \eps(\sigma) \cdot \eps(\tau)$
+\end{proof}
+\begin{definition}[alternating group]
+  The alternating group of degree $n$, $A_n$, is the kernel of the homomorphism $\eps$
+\end{definition}
+
+\begin{proposition}
+  The permutation $\sigma$ is odd $\iff$ the number of cycles of even length if its sycle decomposition is odd.
+\end{proposition}
