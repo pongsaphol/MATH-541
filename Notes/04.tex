@@ -52,7 +52,7 @@ $\varphi: g \mapsto \sigma_g$
 \end{observation}
 
 \begin{proof}
-  $G \cong G/\ker(\varphi) \cong \phi(G) \subseteq S_A$
+  $G \cong G/\ker(\varphi) \cong \varphi(G) \subseteq S_A$
 \end{proof}
 
 
@@ -109,3 +109,127 @@ $\varphi: g \mapsto \sigma_g$
 \begin{theorem}
   If $\sigma \in S_A$, then $\sigma$ is a product of distinct elements $(n\ x)$ or $(n\ y)$ for $n \in A, x,y \notin A$
 \end{theorem}
+
+\section{The left-multiplication action()}
+$G$ acts on $G$ by $g\cdot h = gh$, $g_1(g_2\cdot h) = g_1g_2h = g_1g_2\cdot h$
+
+\begin{observation}
+  The left-multiplication action is transitive, faithful and $G_a = \{1\}$ for any $a \in G$
+\end{observation}
+
+\begin{proof}
+  $(ba^{-1})\cdot a = b$, so $ba^{-1}$ moves $a$ to $b$ so, the action is transitive.
+  $$x \in G_a \iff x \cdot a = a \iff x a a^{-1} = a^{-1} \iff x = 1$$
+\end{proof}
+
+\begin{theorem}
+  $H \le G$, $G$ act on $A$ by left-multiplication
+  \begin{enumerate}
+    \item $G$ acts transitively on $A$
+    \item $G_{1H} = H$
+    \item $\ker$ of the action ($= \{g \in G \mid g \cdot aH = aH\}$) 
+    = $\bigcap_{x \in G}xHx^{-1} = $the normal subgroup of $G$ which is contained in $H$
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \begin{enumerate}
+    \item $(ba^{-1})\cdot aH = bH$
+    \item \begin{align*}
+      G_{1H} &= \{g \in G \mid g\cdot 1H = 1H\} \\ 
+        &= \{g \in G \mid gH = 1H\} \\
+        &= \{g \in 1^{-1}g \in H\} \\
+        &= \{g \in g \in H\} \\
+        &= H
+    \end{align*}
+    \item \begin{align*}
+      g \in \ker(\text{action}) &\iff g\cdot x H = xH\ \text{ for every } x\in G \\
+      &\iff g \in \bigcap_{x \in G} \{a \in G \mid a\cdot xH = xH\} \\
+      &\iff g \in \bigcap_{x \in G} \{a \in G \mid x^{-1}a x \in H\} \\
+      &\iff g \in \bigcap_{x \in G} \{a \in G \mid a \in xH x^{-1}\} \\
+      &\iff g \in \bigcap_{x \in G} xHx^{-1}
+    \end{align*}
+  \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+  If $G$ is a finite group of order $n$. Let $p$ be the smallest prime dividing $n$.
+  Suppose $H \le G$ so $|G:H| = p$ then $H \trianglelefteq G$
+\end{corollary}
+\begin{proof}
+  $G \curvearrowright A = \{\text{left }H\text{-cosets}\}$ 
+  
+  $\pi: G \to S_A$ be the representation of this action
+
+  $k = \ker(\pi)$
+
+  Goal: $H = K$, i.e., $|H:K|=1$
+\end{proof}
+
+\section{Conjugation action of $G$ on $G$}
+
+\[g\cdot h = ghg^{-1}\]
+\[g\cdot S = gSg^{-1} = \{gxg^{-1} \mid x \in S\}\]
+
+Size of an orbit, orbit of a $=|G:G_a|$
+
+Size of orbit of $h \in G = |G:C_G(h)|$, $S \subseteq G = |G:N_G(S)|$
+
+\begin{theorem}[the class equation]
+  let $G$ be a finite group and $g_1, g_2, \dotsc g_r$ be reoresentatives of all the conjugacy classes
+  then \[|G| = \sum_{i = 1}^r |\text{Orbit}(g_i)| = \sum_{i=1}^r|G:G_{g_i}| = \sum_{i=1}^r|G:C_G(g_i)|\]
+\end{theorem}
+
+let $g_1, \dotsc, g_r$ be representative of every conjugate class not contained in $Z(G)$
+\[|G| = \sum_{i=1}^r|G:C_G(g_i)| + |Z(G)|\]
+
+\begin{theorem}
+  let $p$ be prime, $G$ a group of order $p^\alpha$ for some $\alpha \in \NN$ then 
+  $|Z(G)| \neq 1$
+\end{theorem}
+\begin{proof}
+  let $g_1, \dotsc, g_r$ represents all conjugacy classes of size $\ge 1$
+  \begin{align*}
+    p^\alpha &= |G| = \sum_{i=1}^r |g:C_G(g_i)| + |Z(G)| \\
+    |G| &= \underbrace{|G:C_G(g_i)|}_{\neq 1} \cdot |C_G(g_i)|
+  \end{align*}
+  So, $p \mid |G:C_G(g_i)|$, so $p \mid |Z(G)| \implies |Z(G)| \ge p$
+\end{proof}
+
+
+\begin{example}
+  
+Q:What is a conjugacy class in $S_n$?
+
+Describe when 2 diff, products of disj cycles are conjugate
+
+$\sigma = (1\ 2\ 3)(4\ 5)(6)$, for $\tau = (1\ 2\ 3\ 4\ 5\ 6)$
+\begin{align*}
+  \tau\sigma\tau^{-1} &= (1)(2\ 3\ 4)(5\ 6) \\
+  \sigma &= (6)(1\ 2\ 3)(4\ 5) \\
+  \tau\sigma\tau^{-1} &= (\tau(6))(\tau(1)\ \tau(2)\ \tau(3))(\tau(4)\ \tau(5)) 
+\end{align*}
+\end{example}
+
+\begin{observation}
+  If $\sigma = (a_1\ \dotsc a_{r_1})(a_{r_1+1}\ \dotsc\ a_{r_2})\dotsc$
+  then 
+  \[\tau\sigma\tau^{-1} = (\tau(a_1)\ \dotsc \tau(a_{r_1}) \dotsc\]
+\end{observation}
+\begin{proof}
+  \begin{align*}
+    \tau\sigma\tau^{-1}(\tau(a_j)) &= \tau\sigma(a_j) = \tau(a_{j_1}) \\
+    \tau\sigma\tau^{-1}(\tau(a_{r_n})) &= \tau\sigma(a_{r_n}) = \tau(a_{r_{n-1}} + 1)
+  \end{align*}
+\end{proof}
+
+If $\sigma = $ a product of disj cycles of lengths $n_1, \dotsc, n_r$ (including 1-cycles)
+and $n_1 \le \dotsc \le n_r$ then $(n_1\ \dotsc\ n_r)$ is the cycle-type of $\sigma$
+
+\begin{observation}
+  $p$ is conj to $\sigma$ $\iff$ they have the same cycle-type.
+\end{observation}
+
+\begin{example}
+  The conj classes in $S_5$
+\end{example}
